@@ -35,7 +35,7 @@ public class UserController extends BaseController {
         org.springframework.security.core.userdetails.User loginUser =
                 userService.getUserByUsernameAndPassword(username, password);
         if (loginUser == null) {
-            return ResponseEntity.fail("invalid username or password");
+            return ResponseEntity.fail(ResponseEntity.EXCEPTION, "invalid username or password");
         }
 
         String token = jwtUtils.createToken(loginUser.getUsername(), loginUser.getUsername());
@@ -58,6 +58,7 @@ public class UserController extends BaseController {
         String bCryptPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(bCryptPassword);
         User saveUser = userService.createUser(user);
+        saveUser.setPassword(null);
 
         return ResponseEntity.success(saveUser);
     }

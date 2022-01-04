@@ -20,6 +20,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String[] AUTH_WHITELIST = {
+        // -- all public
+        "/public/**",
         // -- login and register url
         "/user/login",
         "/user/register",

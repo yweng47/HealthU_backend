@@ -9,6 +9,7 @@ public class ResponseEntity<T> implements Serializable {
     public static final int EXCEPTION = 401;
     public static final int SYS_ERROR = 402;
     public static final int PARAMS_ERROR = 403;
+    public static final int NOT_FOUND = 404;
     public static final int NOT_SUPPORTED = 410;
     public static final int INVALID_AUTHCODE = 444;
     public static final int TOO_FREQUENT = 445;
