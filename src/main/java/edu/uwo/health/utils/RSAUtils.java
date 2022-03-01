@@ -47,10 +47,24 @@ public class RSAUtils {
     }
 
     public static String getPublicKey() {
+        if (keyMap.size() == 0) {
+            try {
+                RSAUtils.genKeyPair();
+            } catch (NoSuchAlgorithmException e) {
+                System.out.println(e);
+            }
+        }
         return keyMap.get(0);
     }
 
     public static String getPrivateKey() {
+        if (keyMap.size() == 0) {
+            try {
+                RSAUtils.genKeyPair();
+            } catch (NoSuchAlgorithmException e) {
+                System.out.println(e);
+            }
+        }
         return keyMap.get(1);
     }
 }
