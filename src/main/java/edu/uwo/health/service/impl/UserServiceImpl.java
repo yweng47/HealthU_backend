@@ -10,6 +10,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -27,6 +29,7 @@ public class UserServiceImpl implements UserService {
     public org.springframework.security.core.userdetails.User getUserByUsernameAndPassword(String username, String password) {
         org.springframework.security.core.userdetails.User loginUser = null;
         try {
+            // decrypt password by private key
             String decryptPassword = RSAUtils.decrypt(password, RSAUtils.getPrivateKey());
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, decryptPassword));
             loginUser = (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
@@ -37,5 +40,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUser(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public int updateUser(String username, int healthstatus) {
+        Date updateDate = new Date();
+        return userRepository.updateUserHealthStatus(username, healthstatus, updateDate);
     }
 }
