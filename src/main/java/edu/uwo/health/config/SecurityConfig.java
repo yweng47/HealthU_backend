@@ -25,6 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // -- login and register url
         "/user/login",
         "/user/register",
+        "/user/faceLogin",
+        "/user/reportHealth",
+        "/user/sendEmail",
+        "/user/autoLogin",
         // -- swagger ui
         "/swagger-ui/**",
         "/v3/api-docs",
