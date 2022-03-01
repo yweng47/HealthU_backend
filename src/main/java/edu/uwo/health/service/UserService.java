@@ -8,4 +8,6 @@ public interface UserService {
     public org.springframework.security.core.userdetails.User getUserByUsernameAndPassword(String username, String password);
 
     public User createUser(User user);
+
+    public int updateUser(String username, int healthstatus);
 }

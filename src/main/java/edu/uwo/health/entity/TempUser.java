@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class User implements Serializable {
+public class TempUser implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -15,23 +15,23 @@ public class User implements Serializable {
     private String username;
     @NotEmpty(message = "password is required")
     private String password;
+    @NotEmpty(message = "name is required")
     private String name;
-    @Column(name = "health_status", columnDefinition = "integer default 25")
-    private int healthStatus = 4;
     @Column(name = "student_id")
     @NotEmpty(message = "student id is required")
     private String studentID;
-    @Column(name = "update_date")
-    private Date updateDate;
+    @Column(name = "verify_code")
+    @NotEmpty(message = "verify code is required")
+    private String verifyCode;
 
-    public User() {}
+    public TempUser() {}
 
-    public User(Integer id, String username, String password, String name, int healthStatus, String studentID) {
+    public TempUser(Integer id, String username, String password, String name, String studentID, String verifyCode) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
-        this.healthStatus = healthStatus;
+        this.verifyCode = verifyCode;
     }
 
     public Integer getId() {
@@ -66,14 +66,6 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public int getHealthStatus() {
-        return healthStatus;
-    }
-
-    public void setHealthStatus(int healthStatus) {
-        this.healthStatus = healthStatus;
-    }
-
     public String getStudentID() {
         return studentID;
     }
@@ -82,11 +74,11 @@ public class User implements Serializable {
         this.studentID = studentID;
     }
 
-    public Date getUpdateDate() {
-        return updateDate;
+    public String getVerifyCode() {
+        return verifyCode;
     }
 
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
+    public void setVerifyCode(String verifyCode) {
+        this.verifyCode = verifyCode;
     }
 }

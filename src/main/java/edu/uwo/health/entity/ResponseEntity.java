@@ -14,6 +14,8 @@ public class ResponseEntity<T> implements Serializable {
     public static final int INVALID_AUTHCODE = 444;
     public static final int TOO_FREQUENT = 445;
     public static final int UNKNOWN_ERROR = 499;
+    public static final int REPORT_ALREADY = 406;
+    public static final int INVALID_PARAMS = 410;
 
     private Integer code;
     private String message;
